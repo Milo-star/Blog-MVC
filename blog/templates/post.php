@@ -7,7 +7,9 @@
 <div class="news">
     <h3>
         <?= htmlspecialchars($post->title) ?>
-        <em>le <?= $post->frenchCreationDate ?></em>
+        <em>le
+            <?= $post->frenchCreationDate ?>
+        </em>
     </h3>
 
     <p>
@@ -18,24 +20,31 @@
 <h2>Commentaires</h2>
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
-   <div>
-      <label for="author">Auteur</label><br />
-      <input type="text" id="author" name="author" />
-   </div>
-   <div>
-      <label for="comment">Commentaire</label><br />
-      <textarea id="comment" name="comment"></textarea>
-   </div>
-   <div>
-      <input type="submit" />
-   </div>
+    <div>
+        <label for="author">Auteur</label><br />
+        <input type="text" id="author" name="author" />
+    </div>
+    <div>
+        <label for="comment">Commentaire</label><br />
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
 </form>
 
 <?php
 foreach ($comments as $comment) {
-?>
-    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
-    <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+    ?>
+    <p><strong>
+            <?= htmlspecialchars($comment->author) ?>
+        </strong> le
+        <?= $comment->frenchCreationDate ?> (<a
+            href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)
+    </p>
+    <p>
+        <?= nl2br(htmlspecialchars($comment->comment)) ?>
+    </p>
 <?php
 }
 ?>
